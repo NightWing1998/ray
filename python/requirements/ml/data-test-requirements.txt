@@ -35,7 +35,9 @@ confluent-kafka
 pybase64
 hudi==0.4.0
 datasketches
-testcontainers[kafka]
+# `azurite` powers the Azure emulator in test_catalog_azure.py, the same way
+# `kafka` powers test_kafka.py's broker.
+testcontainers[kafka,azurite]
 obstore
 pyarrow
 torch
