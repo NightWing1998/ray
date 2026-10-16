@@ -27,7 +27,9 @@
         "ms-python.debugpy",
         "ms-vscode.cpptools",
         "ms-vscode.cmake-tools",
-        "Anthropic.claude-code"
+        "Anthropic.claude-code",
+        "anyscalecompute.ray-distributed-debugger",
+        "mutantdino.resourcemonitor"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/home/vscode/.conda/envs/raypy/bin/python",
