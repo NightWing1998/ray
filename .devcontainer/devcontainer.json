@@ -1,0 +1,56 @@
+{
+  "name": "Ray OSS ${localWorkspaceFolderBasename}",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:2.1.1": {},
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+    "ghcr.io/devcontainers/features/common-utils:2.7.1": {
+      "installPingCommand": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installZsh": true,
+      "installOhMyZshConfig": true,
+      "installSsl": true,
+      "upgradePackages": true
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "Anthropic.claude-code"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/home/vscode/.conda/envs/raypy/bin/python",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "cmake.configureOnOpen": false,
+        "python.terminal.useEnvFile": true
+      }
+    }
+  },
+
+  "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.claude /home/vscode/bazel-cache && conda init zsh && echo 'conda activate /home/vscode/.conda/envs/raypy' >> ~/.zshrc",
+  "mounts": [
+    "source=bazel-cache-oss,target=/home/vscode/bazel-cache,type=volume",
+    "source=claude-code-config,target=/home/vscode/.claude,type=volume"
+  ],
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+  },
+  "runArgs": [
+    "--shm-size=8g",
+    "--cap-add=NET_RAW",
+    "--cap-add=NET_ADMIN",
+    "--network=host",
+    "--memory-swap=-1"
+  ]
+}
