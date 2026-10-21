@@ -43,7 +43,8 @@
   "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.claude /home/vscode/bazel-cache && conda init zsh && echo 'conda activate /home/vscode/.conda/envs/raypy' >> ~/.zshrc",
   "mounts": [
     "source=bazel-cache-oss,target=/home/vscode/bazel-cache,type=volume",
-    "source=claude-code-config,target=/home/vscode/.claude,type=volume"
+    "source=claude-code-config,target=/home/vscode/.claude,type=volume",
+    "source=${localEnv:HOME}/.claude-mem,target=/home/vscode/.claude-mem,type=bind"
   ],
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
@@ -51,8 +52,11 @@
   "runArgs": [
     "--shm-size=8g",
     "--cap-add=NET_RAW",
+
     "--cap-add=NET_ADMIN",
     "--network=host",
     "--memory-swap=-1"
-  ]
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace/,type=bind",
+  "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}"
 }
