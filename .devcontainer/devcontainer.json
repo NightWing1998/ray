@@ -23,19 +23,23 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance",
         "ms-python.debugpy",
         "ms-vscode.cpptools",
         "ms-vscode.cmake-tools",
         "Anthropic.claude-code",
         "anyscalecompute.ray-distributed-debugger",
-        "mutantdino.resourcemonitor"
+        "mutantdino.resourcemonitor",
+        "meta.pyrefly",
+        "ms-python.pylint",
+        "ms-toolsai.jupyter"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/home/vscode/.conda/envs/raypy/bin/python",
         "terminal.integrated.defaultProfile.linux": "zsh",
         "cmake.configureOnOpen": false,
-        "python.terminal.useEnvFile": true
+        "python.terminal.useEnvFile": true,
+        "python-envs.defaultEnvManager": "ms-python.python:venv",
+        "python.REPL.enableREPLSmartSend": true
       }
     }
   },
@@ -52,7 +56,6 @@
   "runArgs": [
     "--shm-size=8g",
     "--cap-add=NET_RAW",
-
     "--cap-add=NET_ADMIN",
     "--network=host",
     "--memory-swap=-1"
