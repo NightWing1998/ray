@@ -16,6 +16,9 @@
       "installOhMyZshConfig": true,
       "installSsl": true,
       "upgradePackages": true
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
     }
   },
 
@@ -43,7 +46,7 @@
       }
     }
   },
-
+  "initializeCommand": "echo \"GH_TOKEN=$(gh auth token)\" > .devcontainer/.env.devcontainer",
   "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.claude /home/vscode/bazel-cache && conda init zsh && echo 'conda activate /home/vscode/.conda/envs/raypy' >> ~/.zshrc",
   "mounts": [
     "source=bazel-cache-oss,target=/home/vscode/bazel-cache,type=volume",
