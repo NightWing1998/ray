@@ -63,6 +63,6 @@
     "--network=host",
     "--memory-swap=-1"
   ],
-  "workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace/,type=bind",
-  "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}"
+  "workspaceMount": "source=${localWorkspaceFolder}/..,target=${localWorkspaceFolder}/..,type=bind",
+  "workspaceFolder": "${localWorkspaceFolder}"
 }
